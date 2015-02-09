@@ -9,26 +9,17 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Embeddable
 public class RolePK implements Serializable{
-	public RolePK() {
-		// TODO Auto-generated constructor stub
-	}
 	private Integer idProjet;
 	private Integer idDeveloppeur;
-	private Date dateAffectation;
 	@Column(name="id_projet")
 	public Integer getIdProjet() {
 		return idProjet;
-	}
-	public void setIdProjet(Integer idProjet) {
-		this.idProjet = idProjet;
 	}
 	@Column(name="id_developpeur")
 	public Integer getIdDeveloppeur() {
 		return idDeveloppeur;
 	}
-	public void setIdDeveloppeur(Integer idDeveloppeur) {
-		this.idDeveloppeur = idDeveloppeur;
-	}
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_affectation")
 	public Date getDateAffectation() {
@@ -37,6 +28,7 @@ public class RolePK implements Serializable{
 	public void setDateAffectation(Date dateAffectation) {
 		this.dateAffectation = dateAffectation;
 	}
+	private Date dateAffectation;
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,6 +73,15 @@ public class RolePK implements Serializable{
 		this.idDeveloppeur = idDeveloppeur;
 		this.dateAffectation = dateAffectation;
 	}
+	public RolePK() {
+		// TODO Auto-generated constructor stub
+	}
 	
+	public void setIdProjet(Integer idProjet) {
+		this.idProjet = idProjet;
+	}
+		public void setIdDeveloppeur(Integer idDeveloppeur) {
+			this.idDeveloppeur = idDeveloppeur;
+		}
+	}
 
-}

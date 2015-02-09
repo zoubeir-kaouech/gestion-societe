@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import tn.esprit.domain.Departement;
 import tn.esprit.domain.Employee;
 
 /**
@@ -61,6 +62,7 @@ public class GestionEmployee implements GestionEmployeeRemote, GestionEmployeeLo
 		Employee employee=null;
 		try {
 			employee=entityManager.find(Employee.class, idEmployee);
+			employee.setPhoto(employee.getPhoto());
 		} catch (Exception e) {
 			
 		}
@@ -70,6 +72,27 @@ public class GestionEmployee implements GestionEmployeeRemote, GestionEmployeeLo
 	@Override
 	public List<Employee> findAllEmployees() {
 		Query query=entityManager.createQuery("select e from Employee e ");
+		return query.getResultList();
+	}
+
+	@Override
+	public Employee authentificate(String login, String pwd) {
+		Employee employee=null;
+
+		try {
+			Query query=entityManager.createQuery("select e from Employee e where e.login=:l and e.pwd=:p");	
+		query.setParameter("l", login).setParameter("p",pwd);
+		employee=(Employee) query.getSingleResult();
+		} catch (Exception e) {
+			employee=null;
+		}
+		return employee;
+	}
+
+	@Override
+	public List<Employee> findAllEmployeesByDepartement(Departement departement) {
+		Query query=entityManager.createQuery("select e from Employee e where e.departement=:dep");
+		query.setParameter("dep", departement);
 		return query.getResultList();
 	}
 

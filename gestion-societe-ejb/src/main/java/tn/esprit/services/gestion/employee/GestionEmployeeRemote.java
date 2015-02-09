@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import tn.esprit.domain.Departement;
 import tn.esprit.domain.Employee;
 
 @Remote
@@ -13,5 +14,6 @@ Boolean updateEmployee(Employee employee);
 Boolean deleteEmployee(Employee employee);
 Employee findEmployeeById(Integer idEmployee);
 List<Employee>findAllEmployees();
-
+Employee authentificate(String login,String pwd);
+List<Employee> findAllEmployeesByDepartement(Departement departement);
 }

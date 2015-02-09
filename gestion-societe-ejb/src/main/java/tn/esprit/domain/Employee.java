@@ -3,17 +3,20 @@ package tn.esprit.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -38,6 +41,7 @@ public  class Employee implements Serializable {
 	private String cin;
 	private String login;
 	private String pwd;
+	private Byte[]photo;
 	private static final long serialVersionUID = 1L;
 
 	private Departement departement;// attribut de lien
@@ -135,5 +139,14 @@ private Adresse adresse;
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+@Lob
+@Basic(fetch=FetchType.LAZY)
+	public Byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Byte[] photo) {
+		this.photo = photo;
 	}
 }
