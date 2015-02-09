@@ -12,6 +12,7 @@
 	<class>tn.esprit.domain.Projet</class>
 	<class>tn.esprit.domain.Role</class>
 	<class>tn.esprit.domain.RolePK</class>
+
 	
 	
 		
