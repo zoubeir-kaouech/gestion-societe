@@ -19,4 +19,10 @@ public class GestionEmployeeDelagate {
 	public static Employee doAuthentificate(String login,String pwd){
 		return getProxy().authentificate(login, pwd);
 	}
+	public static Employee doFindEmployeeById(Integer idEmployee){
+		return getProxy().findEmployeeById(idEmployee);
+	}
+	public static Boolean doUpdateEmployee(Employee employee){
+		return getProxy().updateEmployee(employee);
+	}
 }

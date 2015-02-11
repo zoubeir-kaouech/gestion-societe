@@ -3,6 +3,7 @@ package tn.esprit.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -47,7 +48,7 @@ public class Departement implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-@OneToMany(mappedBy="departement")
+@OneToMany(mappedBy="departement",cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	public List<Employee> getEmployees() {
 		return employees;
 	}
@@ -63,5 +64,10 @@ public class Departement implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
+public void asseignEmployeesToDepartement(List<Employee> employees){
+	for (Employee employee : employees) {
+		employee.setDepartement(this);
+	}
+	this.employees=employees;
+}
 }

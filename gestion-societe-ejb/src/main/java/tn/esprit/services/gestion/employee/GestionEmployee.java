@@ -17,7 +17,10 @@ import tn.esprit.domain.Employee;
 public class GestionEmployee implements GestionEmployeeRemote, GestionEmployeeLocal {
 @PersistenceContext(unitName="gestion-societe-ejb")
    EntityManager entityManager;
-    public GestionEmployee() {
+    
+
+
+public GestionEmployee() {
         // TODO Auto-generated constructor stub
     }
 

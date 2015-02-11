@@ -15,7 +15,11 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-		
+		<dependency>
+	<groupId>net.java.dev.beansbinding</groupId>
+	<artifactId>beansbinding</artifactId>
+	<version>1.2.1</version>
+</dependency>
 		<dependency>
 			<groupId>org.wildfly</groupId>
 			<artifactId>wildfly-ejb-client-bom</artifactId>

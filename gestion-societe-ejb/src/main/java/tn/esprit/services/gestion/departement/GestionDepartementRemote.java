@@ -9,9 +9,10 @@ import tn.esprit.domain.Departement;
 @Remote
 public interface GestionDepartementRemote {
 	Boolean addDepartement(Departement departement );
+	Departement findDepartementById(Integer idDepartement);
 	Boolean updateDepartement(Departement departement);
 	Boolean deleteDepartement(Departement departement);
-	Departement findDepartementById(Integer idDepartement);
+	
 	List<Departement>findAllDepartements();
 
 

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
@@ -105,7 +106,7 @@ private Adresse adresse;
 		this.pwd = pwd;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name = "id_departement")
 	public Departement getDepartement() {
 		return departement;
