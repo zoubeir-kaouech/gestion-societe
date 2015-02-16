@@ -7,8 +7,10 @@ import java.util.List;
 
 import org.junit.Test;
 
+import tn.esprit.delegate.GestionCompetenceDelegate;
 import tn.esprit.delegate.GestionDepartementDelegate;
 import tn.esprit.delegate.GestionEmployeeDelagate;
+import tn.esprit.domain.Competence;
 import tn.esprit.domain.Departement;
 import tn.esprit.domain.Developpeur;
 import tn.esprit.domain.Directeur;
@@ -45,6 +47,7 @@ public class TestGestionEmployee {
 	 }
 	 @Test
 	 public void _4affectNewDepartementToNewEmployee(){
+		
 		 Departement departement=new Departement();
 departement.setName("Dep");
 		 Employee employee=new Developpeur();
@@ -68,5 +71,43 @@ departement.setName("Dep");
 		 departement.asseignEmployeesToDepartement(employees);
 		 assertEquals(GestionDepartementDelegate.doAddDepartement(departement),true);
 		 
+	 }
+	 @Test
+	 public void _6affectCompetencesToEmployee(){
+		 Employee employee=GestionEmployeeDelagate.doFindEmployeeById(1);
+		 List<Competence> competences=GestionCompetenceDelegate.doFindAllCompetences();
+		 employee.setCompetences(competences);
+		 assertEquals(GestionEmployeeDelagate.doUpdateEmployee(employee), true);
+	 }
+	 @Test
+	 public void _7affectNewCompetencesToEmployee(){
+		 Employee employee=GestionEmployeeDelagate.doFindEmployeeById(1);
+		List<Competence> competences=new ArrayList<Competence>();
+		Competence competence=new Competence();
+		competence.setLabel("Java");
+		competences.add(competence);
+		
+		Competence competence2=new Competence();
+		competence2.setLabel("NoSql");
+		competences.add(competence2);
+		List<Competence> competences2=GestionCompetenceDelegate.doFindAllCompetencesByEmployee(employee);
+		competences2.addAll(competences);
+		employee.setCompetences(competences2);
+		assertEquals(GestionEmployeeDelagate.doUpdateEmployee(employee), true);
+	 }
+	 @Test
+	 public void _8affectCompetencesToNewEmployee(){
+		 Employee employee=new Directeur();
+		 employee.setName("directeur");
+		
+		List<Competence> competences2=GestionCompetenceDelegate.doFindAllCompetences();
+	
+		employee.setCompetences(competences2);
+		assertEquals(GestionEmployeeDelagate.doUpdateEmployee(employee), true);
+	 }	 
+	 @Test
+	 public void _9deleteEmployee(){
+		 Employee employee=GestionEmployeeDelagate.doFindEmployeeById(1);
+		 assertEquals(GestionEmployeeDelagate.doDeleteEmployee(employee), true);
 	 }
 }

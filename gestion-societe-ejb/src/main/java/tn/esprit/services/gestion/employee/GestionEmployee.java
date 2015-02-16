@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import tn.esprit.domain.Competence;
 import tn.esprit.domain.Departement;
 import tn.esprit.domain.Employee;
 
@@ -96,6 +97,13 @@ public GestionEmployee() {
 	public List<Employee> findAllEmployeesByDepartement(Departement departement) {
 		Query query=entityManager.createQuery("select e from Employee e where e.departement=:dep");
 		query.setParameter("dep", departement);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Employee> findAllEmployeesByCompetence(Competence competence) {
+	Query query=entityManager.createQuery("select e from Employee e where :comp member of e.competences");
+	query.setParameter("comp", competence);
 		return query.getResultList();
 	}
 

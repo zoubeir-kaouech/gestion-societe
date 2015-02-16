@@ -116,7 +116,7 @@ private Adresse adresse;
 		this.departement = departement;
 	}
 
-	@ManyToMany
+	@ManyToMany(cascade={CascadeType.MERGE,CascadeType.PERSIST})
 	public List<Competence> getCompetences() {
 		return competences;
 	}
@@ -124,7 +124,7 @@ private Adresse adresse;
 	public void setCompetences(List<Competence> competences) {
 		this.competences = competences;
 	}
-@ManyToOne
+@ManyToOne()
 @JoinColumn(name="employee_sup")
 	public Employee getEmployeeSup() {
 		return employeeSup;

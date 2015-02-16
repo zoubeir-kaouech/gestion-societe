@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import tn.esprit.domain.Competence;
 import tn.esprit.domain.Departement;
 import tn.esprit.domain.Employee;
 
@@ -22,4 +23,6 @@ public interface GestionEmployeeLocal {
 	Employee authentificate(String login, String pwd);
 
 	List<Employee> findAllEmployeesByDepartement(Departement departement);
+
+List<Employee> findAllEmployeesByCompetence(Competence  competence);
 }

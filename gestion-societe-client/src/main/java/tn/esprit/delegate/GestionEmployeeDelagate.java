@@ -1,5 +1,8 @@
 package tn.esprit.delegate;
 
+import java.util.List;
+
+import tn.esprit.domain.Competence;
 import tn.esprit.domain.Employee;
 import tn.esprit.locator.ServiceLocator;
 import tn.esprit.services.gestion.employee.GestionEmployeeRemote;
@@ -24,5 +27,11 @@ public class GestionEmployeeDelagate {
 	}
 	public static Boolean doUpdateEmployee(Employee employee){
 		return getProxy().updateEmployee(employee);
+	}
+	public static List<Employee> doFindAllEmployeesByCompetence(Competence competence) {
+		return getProxy().findAllEmployeesByCompetence(competence);
+	}
+	public static Boolean doDeleteEmployee(Employee employee){
+		return getProxy().deleteEmployee(employee);
 	}
 }
